@@ -1,0 +1,10 @@
+@each(post in posts)
+
+    <div class="bg-base-100 rounded-lg shadow p-4">
+        <div>
+            <!-- Title -->
+            <a class="text-2 font-bold break-words" href="post/{{ post.id }}">{{ post.post }}</a>
+        </div>
+    </div>
+
+@endeach

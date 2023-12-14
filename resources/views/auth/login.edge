@@ -1,0 +1,36 @@
+@layout('layouts/register')
+@set('title','Blog JJ | Login')
+@set('formTitle','Login')
+@set('message','Entre agora!')
+
+@section('body')
+
+    <form action="{{ route('auth.store') }}" method="POST">
+
+        @!component('components/input', {
+            name: 'email',
+            type: 'text',
+            label: 'E-mail',
+            placeholder: 'E-mail'
+        })
+
+        @!component('components/input', {
+            name: 'password',
+            type: 'password',
+            label: 'Senha',
+            placeholder: 'Senha'
+        })
+
+        <div class="form-control mt-6">
+            <button class="btn btn-info">Login</button>
+        </div>
+
+    </form>
+
+    <div class="flex items-center justify-center">
+        <label class="label">
+            <a href="{{ route('user.create') }}" class="label-text-alt link link-hover">Não possui cadastro? Clique aqui!</a>
+        </label>
+    </div>
+
+@end

@@ -1,0 +1,53 @@
+@layout('layouts/main')
+@set('title','Blog JJ | Postagem')
+
+@section('body')
+
+<div class="pb-4">
+  <p class="font-sans font-bold text-xl">Faça uma postagem:</p>
+</div>
+
+    <div class="min-h-0 bg-base-200 rounded-lg shadow-xl p-4">
+
+        <form action="{{ route('post.store') }}" method="POST">
+
+            @!textarea({
+                label: 'Título',
+                placeholder: 'Digite o título do post',
+                name: 'post',
+                rows:'2',
+                minLength:'3',
+                maxLength: '240'
+            })
+
+            @!textarea({
+                label: 'Texto',
+                name: 'texto',
+                placeholder: 'Digite o texto da postagem',
+                rows:'5',
+                maxLength: '2048'
+            })
+
+            @!select({
+                label: 'Categoria',
+                name: 'categoryId',
+                options: categories,
+                disabledMesssage: 'Selecione uma categoria'
+            })
+
+            <div class="flex flex-row-reverse">
+
+                <div class="py-3 pl-1">
+                    <button class="btn btn-info" type="submit">Enviar post</button>
+                </div>
+
+                <div class="py-3">
+
+                    <a href="{{ route('home.index') }}" class="btn btn-info">Cancelar</a>
+
+
+                </div>
+            </div>
+        </form>
+    </div>
+@end
